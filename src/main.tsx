@@ -3,10 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
-const useMocks =
-  import.meta.env.VITE_USE_MOCKS === 'true' ||
-  !import.meta.env.VITE_SF_BASE_URL ||
-  import.meta.env.VITE_SF_BASE_URL === 'https://mock.flashydrinks.com'
+const useMocks = import.meta.env.VITE_USE_MOCKS === 'true'
 
 async function bootstrap() {
   if (useMocks) {

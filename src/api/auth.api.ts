@@ -2,7 +2,6 @@ import { sfClient } from './client'
 import type { AuthToken, BuyerUser } from '../types/auth.types'
 
 const USE_MOCKS = import.meta.env.VITE_USE_MOCKS === 'true'
-const NO_SF_URL = !import.meta.env.VITE_SF_BASE_URL || import.meta.env.VITE_SF_BASE_URL === 'https://mock.flashydrinks.com'
 
 function mockAuthResponse(username: string): { token: AuthToken; user: BuyerUser } {
   return {
@@ -26,7 +25,7 @@ function mockAuthResponse(username: string): { token: AuthToken; user: BuyerUser
 }
 
 export async function getToken(username: string, password: string): Promise<{ token: AuthToken; user: BuyerUser }> {
-  if (USE_MOCKS || NO_SF_URL) {
+  if (USE_MOCKS) {
     return mockAuthResponse(username)
   }
   const { data } = await sfClient.post('/auth/token', { username, password })

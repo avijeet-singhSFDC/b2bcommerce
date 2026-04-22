@@ -8,11 +8,17 @@ RUN npm ci
 
 COPY . .
 
-# Build args are baked into the static bundle at build time
-ARG VITE_SF_BASE_URL
-ARG VITE_SF_CLIENT_ID
-ARG VITE_SF_WEBSTORE_ID
-ARG VITE_USE_MOCKS=false
+# Build args are baked into the static bundle at build time.
+# ARG values must be promoted to ENV so the Vite process can read them.
+ARG VITE_SF_BASE_URL=https://mock.flashydrinks.com
+ARG VITE_SF_CLIENT_ID=mock_client_id
+ARG VITE_SF_WEBSTORE_ID=webstore_001
+ARG VITE_USE_MOCKS=true
+
+ENV VITE_SF_BASE_URL=$VITE_SF_BASE_URL
+ENV VITE_SF_CLIENT_ID=$VITE_SF_CLIENT_ID
+ENV VITE_SF_WEBSTORE_ID=$VITE_SF_WEBSTORE_ID
+ENV VITE_USE_MOCKS=$VITE_USE_MOCKS
 
 RUN npm run build
 
