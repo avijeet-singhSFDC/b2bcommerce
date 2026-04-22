@@ -77,7 +77,7 @@ export function LoginPage() {
           </form>
 
           <div className="mt-5 p-3 bg-blue-50 rounded-lg text-xs text-blue-700">
-            <strong>Demo:</strong> Use any username/password to sign in.
+            <strong>Demo:</strong> Username <strong>demo@flashydrinks.com</strong> / Password <strong>password</strong>
           </div>
         </div>
       </div>
